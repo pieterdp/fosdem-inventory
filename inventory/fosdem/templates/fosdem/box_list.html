@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for box in all_boxes %}
+    <h2>Box {{ box.number }}</h2>
+    <table class="table">
+        <tr>
+            <th scope="row">Location</th>
+            <td>
+                {% for location in box.location %}
+                {{ location.name }}
+                {% endfor %}
+            </td>
+        </tr>
+    </table>
+<table class="table">
+    {% for item in box.items.all %}
+    <tr>
+        <td>
+            {{ item.name }}
+        </td>
+        <td>
+            {{ item.inventory.must_have }}
+        </td>
+        <td>
+            {{ item.inventory.have }}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+    {% endfor %}
+{% endblock %}

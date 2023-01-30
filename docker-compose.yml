@@ -1,0 +1,27 @@
+version: '3'
+services:
+  # This does not work
+  inventory:
+    build: .
+    image: inventory:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
+    environment:
+      POSTGRES_DB: fosdeminventory
+      POSTGRES_PASSWORD: fosdeminventory
+      POSTGRES_USER: fosdeminventory
+    depends_on:
+      - db
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: fosdeminventory
+      POSTGRES_PASSWORD: fosdeminventory
+      POSTGRES_USER: fosdeminventory

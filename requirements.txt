@@ -1,0 +1,9 @@
+Django
+psycopg2-binary
+pytz
+djangorestframework
+markdown
+django-filter
+django-admin-reset
+gunicorn
+django-admin-csvexport
