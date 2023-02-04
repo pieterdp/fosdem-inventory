@@ -7,3 +7,4 @@ django-filter
 django-admin-reset
 gunicorn
 django-admin-csvexport
+jinja2

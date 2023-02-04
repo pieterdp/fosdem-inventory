@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FOSDEM BOX {{ box['box'] }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>BOX {{ box['box'] }}</h1>
+        </div>
+    </div>
+    <div class="row mb-4 mt-2">
+        <div class="col">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><p class="h3">{{ box['destination'] }}</p></li>
+                <li class="list-group-item"><p class="h3">{{ box['location'] }}</p></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col"><p class="h2"><strong>Item</strong></p></th>
+                    <th scope="col"><p class="h2"><strong>At the office</strong></p></th>
+                    <th scope="col"><p class="h2"><strong>At FOSDEM back in</strong></p></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in box['items'] %}
+                <tr>
+                    <td><p class="h3">{{ item['name'] }}</p></td>
+                    <td><p class="h3">{{ item['amount'] }}</p></td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+</html>
