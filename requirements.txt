@@ -8,3 +8,4 @@ django-admin-reset
 gunicorn
 django-admin-csvexport
 jinja2
+pdfkit

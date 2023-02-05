@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import csv
 from jinja2 import Environment, PackageLoader, select_autoescape
+import pdfkit
 
 
 def parse_csv(csv_reader):
@@ -24,6 +25,10 @@ def parse_csv(csv_reader):
     return parsed
 
 
+def to_single_pdf(file_list):
+    pdfkit.from_file(file_list, '2023/inventory.pdf')
+
+
 def main():
     parsed = {}
     env = Environment(
@@ -39,9 +44,14 @@ def main():
     with open('2023/inventory.html', 'w') as inventory_fh:
         inventory_fh.write(template_all.render(boxes=parsed))
 
+    file_list = []
     for box_number, box in parsed.items():
-        with open('2023/{0}.html'.format(box['box']), 'w') as single_fh:
+        file_path = '2023/{0}.html'.format(box['box'])
+        file_list.append(file_path)
+        with open(file_path, 'w') as single_fh:
             single_fh.write(template_single.render(box=box))
+
+    to_single_pdf(file_list)
 
     return 0
 
